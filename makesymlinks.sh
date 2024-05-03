@@ -31,25 +31,16 @@ for file in $files; do
         continue
     fi
     if [[ -e ~/.$file ]]; then
-        echo "Moving .$file to $old_dir"
+        echo "Moving .$file to $olddir"
         mv ~/.$file $olddir/.$file
     fi
-    echo "Creating symlink to .$file in home directory"
-    ln -s $dir/$file ~/.$file
+    echo "Copying .$file to home directory"
+    cp $dir/$file ~/.$file
 done
 
 echo -n "Clone bin directory ..."
 #./install_bin.sh
 echo "Done"
-
-# Extra installations:
-
-# Tmux
-which -s tmux
-if [[ $? != 0 ]]; then
-    sudo apt install tmux
-fi
-
 
 install_zsh()
 {
